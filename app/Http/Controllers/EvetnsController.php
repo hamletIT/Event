@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\event_prod;
+
 
 class EvetnsController extends Controller
 {
@@ -18,11 +20,20 @@ class EvetnsController extends Controller
     }
     public function Index()
     {
-        return view('/Index');
+       
+       
+        $events =event_prod::all();
+       
+        return view('index',compact('events'));
     }
     public function all_Events()
     {
-        return view('/all_events');
+        $events =event_prod::all();
+       
+        return view('all_events',compact('events'));
+      
     }
+   
+   
     
 }
