@@ -6,7 +6,7 @@
 
         <!--========== BOX ICONS ==========-->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
+        
         <!--========== CSS ==========-->
         <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -22,7 +22,7 @@
         <!--========== HEADER ==========-->
         <header class="l-header" id="header">
             <nav class="nav bd-container">
-                <a href="" class="nav__logo">Events</a>
+                <a href="{{route('user.dashboard')}}" class="nav__logo">Events</a>
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
@@ -31,9 +31,26 @@
                         <li class="nav__item"><a href="#services" class="nav__link">All Events</a></li>
                         <li class="nav__item"><a href="#menu" class="nav__link">Menu</a></li>
                         <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
-                        <li class="nav__item"><a href="{{route('login')}}" class="nav__link active-link">Log in</a></li>
-
+                        @if(!Auth::user())
+                        <li class="nav__item"><a href="{{route('login')}}" class="nav__link active-link">Sign in</a></li>
+                        <li class="nav__item"><a href="{{route('register')}}" class="nav__link active-link">Sign up</a></li>
+                        @endif
+                        
                         <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                        
+                        @if(Auth::user())
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                        </div>
+                        @endif
                     </ul>
                 </div>
 

@@ -38,7 +38,7 @@
                 <div class="services__container  bd-grid">
                     <div class="services__content">
                     <img src="assets/img/restoran.jpg" alt="" class="about__img">
-                        <h3 class="services__title">Restoran</h3>
+                        <h3 class="services__title">Restaurant</h3>
                         <p class="services__description">We offer our clients excellent quality services for many years, with the best and delicious food in the city.</p>
                     </div>
 
@@ -61,18 +61,20 @@
             <section class="menu section bd-container" id="menu">
                 <span class="section-subtitle">Special</span>
                 <h2 class="section-title">Yerevan Events</h2>
-
+                
                 <div class="menu__container bd-grid">
+                    @foreach($events as $event)
                     <div class="menu__content">
-                        <img src="assets/img/default_events_photo.jpg" alt="" class="menu__img">
-                        <h3 class="menu__name">Institution name</h3>
-                        <span class="menu__detail">Event name</span>
-                        <span class="menu__preci">When does it start</span>
-                        <span class="menu__preci">when does it end</span>
+                        
+                        <img src="assets/img/{{$event->event_path}}" class="w-100">
+                        <h3 class="menu__name">{{$event->name}}</h3>
+                        <span class="menu__detail">{{$event->discription}}</span>
+                        <span class="menu__preci">{{$event->date_start}}</span>
+                        <span class="menu__preci">{{$event->date_end}}</span>
                         <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
                     </div>
-
-                    <div class="menu__content">
+                    @endforeach
+                    <!-- <div class="menu__content">
                     <img src="assets/img/default_events_photo.jpg" alt="" class="menu__img">
                         <h3 class="menu__name">Institution name</h3>
                         <span class="menu__detail">Event name</span>
@@ -88,8 +90,9 @@
                         <span class="menu__preci">When does it start</span>
                         <span class="menu__preci">when does it end</span>
                         <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
-                    </div>
+                    </div> -->
                 </div>
+               
             </section>
 
             <!--===== APP =======-->
